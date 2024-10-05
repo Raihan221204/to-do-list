@@ -8,195 +8,195 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        body {
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: linear-gradient(45deg, #19d9c3 0%, #294d55 99%, #003b4e 100%);
+overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(45deg, #006400 0%, #32cd32 99%, #32cd32 100%);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     overflow: hidden;
 }
 
-        .container {
-            position: relative;
-            width: 400px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            overflow: hidden;
-        }
+.form {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    transition: transform 0.6s ease-in-out;
+}
 
-        .form {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            padding: 40px;
-            transition: transform 0.6s ease-in-out;
-        }
+.login-form { transform: translateX(0); }
+.forgot-form { transform: translateX(100%); }
+.signup-form { transform: translateX(100%); }
 
-        .login-form { transform: translateX(0); }
-        .forgot-form { transform: translateX(100%); }
-        .signup-form { transform: translateX(100%); }
+.form h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
 
-        .form h2 {
-            position: relative;
-            color: #fff;
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-        }
+.form h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 80px;
+    height: 4px;
+    background: #fff;
+}
 
-        .form h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 80px;
-            height: 4px;
-            background: #fff;
-        }
+.input-box {
+    width: 100%;
+    margin-top: 20px;
+}
 
-        .input-box {
-            width: 100%;
-            margin-top: 20px;
-        }
+.input-box input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
 
-        .input-box input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            outline: none;
-            padding: 10px 20px;
-            border-radius: 35px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 16px;
-            letter-spacing: 1px;
-            color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
+.input-box input::placeholder {
+    color: #fff;
+}
 
-        .input-box input::placeholder {
-            color: #fff;
-        }
+.input-box input[type="submit"] {
+    background: #fff;
+    color: #666;
+    max-width: 100px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
 
-        .input-box input[type="submit"] {
-            background: #fff;
-            color: #666;
-            max-width: 100px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
+.forgot, .signup {
+    margin-top: 5px;
+    color: #fff;
+}
 
-        .forgot, .signup {
-            margin-top: 5px;
-            color: #fff;
-        }
+.forgot a, .signup a, .back-to-login {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        .forgot a, .signup a, .back-to-login {
-            color: #fff;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-        }
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
+.background .shape {
+    position: absolute;
+    filter: blur(50px);
+}
 
-        .background .shape {
-            position: absolute;
-            filter: blur(50px);
-        }
+.background .shape.shape1 {
+    top: -350px;
+    right: -150px;
+    width: 800px;
+    height: 800px;
+    background: #004951;
+}
 
-        .background .shape.shape1 {
-            top: -350px;
-            right: -150px;
-            width: 800px;
-            height: 800px;
-            background: #ff359b;
-        }
+.background .shape.shape2 {
+    bottom: -150px;
+    left: -50px;
+    width: 500px;
+    height: 500px;
+    background: #105a5a;
+}
 
-        .background .shape.shape2 {
-            bottom: -150px;
-            left: -50px;
-            width: 500px;
-            height: 500px;
-            background: #fffd87;
-        }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+.floating-icon {
+    position: absolute;
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.8);
+    animation: float 3s ease-in-out infinite;
+}
 
-        .floating-icon {
-            position: absolute;
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.8);
-            animation: float 3s ease-in-out infinite;
-        }
+.floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.floating-icon:nth-child(2) { top: 20%; right: 10%; animation-delay: 0.5s; }
+.floating-icon:nth-child(3) { bottom: 10%; left: 15%; animation-delay: 1s; }
+.floating-icon:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 1.5s; }
 
-        .floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .floating-icon:nth-child(2) { top: 20%; right: 10%; animation-delay: 0.5s; }
-        .floating-icon:nth-child(3) { bottom: 10%; left: 15%; animation-delay: 1s; }
-        .floating-icon:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 1.5s; }
+@keyframes success-animation {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
 
-        @keyframes success-animation {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+.success-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 172, 181, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
 
-        .success-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(76, 175, 80, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
+.success-animation.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-        .success-animation.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .success-animation i {
-            font-size: 100px;
-            color: white;
-            animation: success-animation 0.5s ease-out;
-        }
+.success-animation i {
+    font-size: 100px;
+    color: white;
+    animation: success-animation 0.5s ease-out;
+}
     </style>
 </head>
 <body>
@@ -228,17 +228,36 @@
             </form>
         </div>
 
+        <!-- Forgot Password Form -->
         <div class="form forgot-form">
             <h2>Forgot Password</h2>
-            <form id="forgotForm">
-                <div class="input-box">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="input-box">
-                    <input type="submit" value="Reset">
-                </div>
-                <p class="back-to-login" id="backToLoginFromForgot">Back to Login</p>
-            </form>
+            <!-- Step 1: Enter Email -->
+            <div class="forgot-step forgot-step1 active">
+                <form id="forgotFormStep1">
+                    <div class="input-box">
+                        <input type="email" id="forgotEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" value="Next">
+                    </div>
+                    <p class="back-to-login" id="backToLoginFromForgot1">Back to Login</p>
+                </form>
+            </div>
+            <!-- Step 2: Enter New Password -->
+            <div class="forgot-step forgot-step2" style="display:none;">
+                <form id="forgotFormStep2">
+                    <div class="input-box">
+                        <input type="password" id="newPassword" placeholder="New Password" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" value="Reset">
+                    </div>
+                    <p class="back-to-login" id="backToLoginFromForgot2">Back to Login</p>
+                </form>
+            </div>
         </div>
 
         <div class="form signup-form">
@@ -264,6 +283,7 @@
         </div>
     </div>
 
+    <!-- Success Animation -->
     <div class="success-animation">
         <i class="fas fa-check-circle"></i>
     </div>
@@ -272,58 +292,87 @@
         const loginForm = document.querySelector('.login-form');
         const forgotForm = document.querySelector('.forgot-form');
         const signupForm = document.querySelector('.signup-form');
+        const forgotLink = document.getElementById('forgotLink');
+        const signupLink = document.getElementById('signupLink');
+        const backToLoginFromForgot1 = document.getElementById('backToLoginFromForgot1');
+        const backToLoginFromForgot2 = document.getElementById('backToLoginFromForgot2');
+        const backToLoginFromSignup = document.getElementById('backToLoginFromSignup');
+        const forgotFormStep1 = document.getElementById('forgotFormStep1');
+        const forgotFormStep2 = document.getElementById('forgotFormStep2');
+        const successAnimation = document.querySelector('.success-animation');
 
-        document.getElementById('forgotLink').addEventListener('click', (e) => {
-            e.preventDefault();
+        forgotLink.addEventListener('click', () => {
             loginForm.style.transform = 'translateX(-100%)';
             forgotForm.style.transform = 'translateX(0)';
         });
 
-        document.getElementById('signupLink').addEventListener('click', (e) => {
-            e.preventDefault();
+        signupLink.addEventListener('click', () => {
             loginForm.style.transform = 'translateX(-100%)';
             signupForm.style.transform = 'translateX(0)';
         });
 
-        document.getElementById('backToLoginFromForgot').addEventListener('click', () => {
+        backToLoginFromForgot1.addEventListener('click', () => {
             loginForm.style.transform = 'translateX(0)';
             forgotForm.style.transform = 'translateX(100%)';
         });
 
-        document.getElementById('backToLoginFromSignup').addEventListener('click', () => {
-            loginForm.style.transform = 'translateX(0)';
-            signupForm.style.transform = 'translateX(100%)';
-        });
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            simulateSuccess();
-        });
-
-        document.getElementById('forgotForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Password reset link sent to your email!');
+        backToLoginFromForgot2.addEventListener('click', () => {
             loginForm.style.transform = 'translateX(0)';
             forgotForm.style.transform = 'translateX(100%)';
         });
 
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Account created successfully!');
+        backToLoginFromSignup.addEventListener('click', () => {
             loginForm.style.transform = 'translateX(0)';
             signupForm.style.transform = 'translateX(100%)';
         });
 
-        function simulateSuccess() {
+        // Handler for Step 1 of Forgot Password Form
+        forgotFormStep1.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Move to Step 2
+            forgotFormStep1.parentElement.style.display = 'none';
+            forgotFormStep2.parentElement.style.display = 'block';
+        });
+
+        // Handler for Step 2 of Forgot Password Form
+        forgotFormStep2.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Simulate successful password reset
+            successAnimation.classList.add('active');
             setTimeout(() => {
-                const successAnimation = document.querySelector('.success-animation');
-                successAnimation.classList.add('active');
-                
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1500);
-            }, 1000);
-        }
+                successAnimation.classList.remove('active');
+                forgotFormStep2.parentElement.style.display = 'none';
+                forgotFormStep1.parentElement.style.display = 'block';
+                loginForm.style.transform = 'translateX(0)';
+                forgotForm.style.transform = 'translateX(100%)';
+            }, 2000);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginForm = document.getElementById("loginForm");
+            const successAnimation = document.querySelector(".success-animation");
+
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                // Simulate login success (you should handle real authentication here)
+                successAnimation.classList.add("active"); // Show success animation
+
+                setTimeout(function() {
+                    // Hide success animation and redirect to homePage.html
+                    successAnimation.classList.remove("active");
+                    window.location.href = "homePage.html";
+                }, 2000); // Show animation for 2 seconds before redirecting
+            });
+        });
     </script>
 </body>
 </html>
