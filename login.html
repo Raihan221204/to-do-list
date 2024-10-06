@@ -228,60 +228,60 @@ overflow: hidden;
             </form>
         </div>
 
-        <!-- Forgot Password Form -->
-        <div class="form forgot-form">
-            <h2>Forgot Password</h2>
-            <!-- Step 1: Enter Email -->
-            <div class="forgot-step forgot-step1 active">
-                <form id="forgotFormStep1">
-                    <div class="input-box">
-                        <input type="email" id="forgotEmail" placeholder="Enter your email" required>
-                    </div>
-                    <div class="input-box">
-                        <input type="submit" value="Next">
-                    </div>
-                    <p class="back-to-login" id="backToLoginFromForgot1">Back to Login</p>
-                </form>
+       <!-- Formulir Lupa Password -->
+<div class="form forgot-form">
+    <h2>Lupa Password</h2>
+    <!-- Langkah 1: Masukkan Email -->
+    <div class="forgot-step forgot-step1 active">
+        <form id="forgotFormStep1" method="POST" action="/forgot-password">
+            <div class="input-box">
+                <input type="email" id="forgotEmail" placeholder="Masukkan email Anda" required>
             </div>
-            <!-- Step 2: Enter New Password -->
-            <div class="forgot-step forgot-step2" style="display:none;">
-                <form id="forgotFormStep2">
-                    <div class="input-box">
-                        <input type="password" id="newPassword" placeholder="New Password" required>
-                    </div>
-                    <div class="input-box">
-                        <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
-                    </div>
-                    <div class="input-box">
-                        <input type="submit" value="Reset">
-                    </div>
-                    <p class="back-to-login" id="backToLoginFromForgot2">Back to Login</p>
-                </form>
+            <div class="input-box">
+                <input type="submit" value="Next">
             </div>
-        </div>
-
-        <div class="form signup-form">
-            <h2>Create Account</h2>
-            <form id="signupForm">
-                <div class="input-box">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="input-box">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Confirm Password" required>
-                </div>
-                <div class="input-box">
-                    <input type="submit" value="Sign Up">
-                </div>
-                <p class="back-to-login" id="backToLoginFromSignup">Back to Login</p>
-            </form>
-        </div>
+            <p class="back-to-login" id="backToLoginFromForgot1">Kembali ke Login</p>
+        </form>
     </div>
+    <!-- Langkah 2: Masukkan Password Baru -->
+    <div class="forgot-step forgot-step2" style="display:none;">
+        <form id="forgotFormStep2" method="POST" action="/reset-password">
+            <div class="input-box">
+                <input type="password" id="newPassword" placeholder="Password Baru" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="confirmPassword" placeholder="Konfirmasi Password Baru" required>
+            </div>
+            <div class="input-box">
+                <input type="submit" value="Reset">
+            </div>
+            <p class="back-to-login" id="backToLoginFromForgot2">Kembali ke Login</p>
+        </form>
+    </div>
+</div>
+
+<div class="form signup-form">
+    <h2>Buat Akun</h2>
+    <form id="signupForm" method="POST" action="/signup">
+        <div class="input-box">
+            <input type="text" id="signupUsername" placeholder="Nama Pengguna" required>
+        </div>
+        <div class="input-box">
+            <input type="email" id="signupEmail" placeholder="Email" required>
+        </div>
+        <div class="input-box">
+            <input type="password" id="signupPassword" placeholder="Password" required>
+        </div>
+        <div class="input-box">
+            <input type="password" id="signupConfirmPassword" placeholder="Konfirmasi Password" required>
+        </div>
+        <div class="input-box">
+            <input type="submit" value="Daftar">
+        </div>
+        <p class="back-to-login" id="backToLoginFromSignup">Kembali ke Login</p>
+    </form>
+</div>
+
 
     <!-- Success Animation -->
     <div class="success-animation">
