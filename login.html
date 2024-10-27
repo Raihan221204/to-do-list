@@ -3,376 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Login System</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
-background: linear-gradient(45deg, #19d9c3 0%, #294d55 99%, #003b4e 100%);
-overflow: hidden;
-}
-
-.container {
-    position: relative;
-    width: 400px;
-    height: 500px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    overflow: hidden;
-}
-
-.form {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-    transition: transform 0.6s ease-in-out;
-}
-
-.login-form { transform: translateX(0); }
-.forgot-form { transform: translateX(100%); }
-.signup-form { transform: translateX(100%); }
-
-.form h2 {
-    position: relative;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
-}
-
-.form h2::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 80px;
-    height: 4px;
-    background: #fff;
-}
-
-.input-box {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.input-box input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    outline: none;
-    padding: 10px 20px;
-    border-radius: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.input-box input::placeholder {
-    color: #fff;
-}
-
-.input-box input[type="submit"] {
-    background: #fff;
-    color: #666;
-    max-width: 100px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.forgot, .signup {
-    margin-top: 5px;
-    color: #fff;
-}
-
-.forgot a, .signup a, .back-to-login {
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.background .shape {
-    position: absolute;
-    filter: blur(50px);
-}
-
-.background .shape.shape1 {
-    top: -350px;
-    right: -150px;
-    width: 800px;
-    height: 800px;
-    background: #004951;
-}
-
-.background .shape.shape2 {
-    bottom: -150px;
-    left: -50px;
-    width: 500px;
-    height: 500px;
-    background: #105a5a;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-.floating-icon {
-    position: absolute;
-    font-size: 2em;
-    color: rgba(255, 255, 255, 0.8);
-    animation: float 3s ease-in-out infinite;
-}
-
-.floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-.floating-icon:nth-child(2) { top: 20%; right: 10%; animation-delay: 0.5s; }
-.floating-icon:nth-child(3) { bottom: 10%; left: 15%; animation-delay: 1s; }
-.floating-icon:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 1.5s; }
-
-@keyframes success-animation {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-.success-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 172, 181, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s, visibility 0.5s;
-}
-
-.success-animation.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.success-animation i {
-    font-size: 100px;
-    color: white;
-    animation: success-animation 0.5s ease-out;
-}
-    </style>
+    <title>To-Do List Calendar - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="background">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-    </div>
-    
-    <i class="fas fa-star floating-icon"></i>
-    <i class="fas fa-heart floating-icon"></i>
-    <i class="fas fa-bolt floating-icon"></i>
-    <i class="fas fa-moon floating-icon"></i>
-
-    <div class="container">
-        <div class="form login-form">
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="input-box">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <div class="input-box">
-                    <input type="submit" value="Login">
-                </div>
-                <p class="forgot">Forgot Password? <a href="#" id="forgotLink">Click Here</a></p>
-                <p class="signup">Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
-            </form>
+    <header class="animate__animated animate__fadeIn">
+        <nav>
+            <ul>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('main.new_task') }}" class="nav-link">New Task</a></li>
+                    <li><a href="{{ url_for('main.logout') }}" class="nav-link">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('main.login') }}" class="nav-link">Login</a></li>
+                    <li><a href="{{ url_for('main.register') }}" class="nav-link">Register</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('main.home') }}" class="nav-link">Home</a></li>
+            </ul>
+        </nav>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <em>Dark Mode</em>
         </div>
+    </header>
 
-       <!-- Formulir Lupa Password -->
-<div class="form forgot-form">
-    <h2>Lupa Password</h2>
-    <!-- Langkah 1: Masukkan Email -->
-    <div class="forgot-step forgot-step1 active">
-        <form id="forgotFormStep1" method="POST" action="/forgot-password">
-            <div class="input-box">
-                <input type="email" id="forgotEmail" placeholder="Masukkan email Anda" required>
-            </div>
-            <div class="input-box">
-                <input type="submit" value="Next">
-            </div>
-            <p class="back-to-login" id="backToLoginFromForgot1">Kembali ke Login</p>
-        </form>
-    </div>
-    <!-- Langkah 2: Masukkan Password Baru -->
-    <div class="forgot-step forgot-step2" style="display:none;">
-        <form id="forgotFormStep2" method="POST" action="/reset-password">
-            <div class="input-box">
-                <input type="password" id="newPassword" placeholder="Password Baru" required>
-            </div>
-            <div class="input-box">
-                <input type="password" id="confirmPassword" placeholder="Konfirmasi Password Baru" required>
-            </div>
-            <div class="input-box">
-                <input type="submit" value="Reset">
-            </div>
-            <p class="back-to-login" id="backToLoginFromForgot2">Kembali ke Login</p>
-        </form>
-    </div>
-</div>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} animate__animated animate__fadeIn">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-<div class="form signup-form">
-    <h2>Buat Akun</h2>
-    <form id="signupForm" method="POST" action="/signup">
-        <div class="input-box">
-            <input type="text" id="signupUsername" placeholder="Nama Pengguna" required>
-        </div>
-        <div class="input-box">
-            <input type="email" id="signupEmail" placeholder="Email" required>
-        </div>
-        <div class="input-box">
-            <input type="password" id="signupPassword" placeholder="Password" required>
-        </div>
-        <div class="input-box">
-            <input type="password" id="signupConfirmPassword" placeholder="Konfirmasi Password" required>
-        </div>
-        <div class="input-box">
-            <input type="submit" value="Daftar">
-        </div>
-        <p class="back-to-login" id="backToLoginFromSignup">Kembali ke Login</p>
-    </form>
-</div>
+        {% block content %}{% endblock %}
+    </main>
 
+    <footer class="animate__animated animate__fadeIn">
+        <p>&copy; made by group 3</p>
+    </footer>
 
-    <!-- Success Animation -->
-    <div class="success-animation">
-        <i class="fas fa-check-circle"></i>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
-        const loginForm = document.querySelector('.login-form');
-        const forgotForm = document.querySelector('.forgot-form');
-        const signupForm = document.querySelector('.signup-form');
-        const forgotLink = document.getElementById('forgotLink');
-        const signupLink = document.getElementById('signupLink');
-        const backToLoginFromForgot1 = document.getElementById('backToLoginFromForgot1');
-        const backToLoginFromForgot2 = document.getElementById('backToLoginFromForgot2');
-        const backToLoginFromSignup = document.getElementById('backToLoginFromSignup');
-        const forgotFormStep1 = document.getElementById('forgotFormStep1');
-        const forgotFormStep2 = document.getElementById('forgotFormStep2');
-        const successAnimation = document.querySelector('.success-animation');
+        AOS.init();
+        
+        // Dark mode toggle functionality
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
 
-        forgotLink.addEventListener('click', () => {
-            loginForm.style.transform = 'translateX(-100%)';
-            forgotForm.style.transform = 'translateX(0)';
-        });
-
-        signupLink.addEventListener('click', () => {
-            loginForm.style.transform = 'translateX(-100%)';
-            signupForm.style.transform = 'translateX(0)';
-        });
-
-        backToLoginFromForgot1.addEventListener('click', () => {
-            loginForm.style.transform = 'translateX(0)';
-            forgotForm.style.transform = 'translateX(100%)';
-        });
-
-        backToLoginFromForgot2.addEventListener('click', () => {
-            loginForm.style.transform = 'translateX(0)';
-            forgotForm.style.transform = 'translateX(100%)';
-        });
-
-        backToLoginFromSignup.addEventListener('click', () => {
-            loginForm.style.transform = 'translateX(0)';
-            signupForm.style.transform = 'translateX(100%)';
-        });
-
-        // Handler for Step 1 of Forgot Password Form
-        forgotFormStep1.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Move to Step 2
-            forgotFormStep1.parentElement.style.display = 'none';
-            forgotFormStep2.parentElement.style.display = 'block';
-        });
-
-        // Handler for Step 2 of Forgot Password Form
-        forgotFormStep2.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (newPassword !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
             }
+        }
 
-            // Simulate successful password reset
-            successAnimation.classList.add('active');
-            setTimeout(() => {
-                successAnimation.classList.remove('active');
-                forgotFormStep2.parentElement.style.display = 'none';
-                forgotFormStep1.parentElement.style.display = 'block';
-                loginForm.style.transform = 'translateX(0)';
-                forgotForm.style.transform = 'translateX(100%)';
-            }, 2000);
-        });
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }    
+        }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const loginForm = document.getElementById("loginForm");
-            const successAnimation = document.querySelector(".success-animation");
-
-            loginForm.addEventListener("submit", function(event) {
-                event.preventDefault();
-
-                // Simulate login success (you should handle real authentication here)
-                successAnimation.classList.add("active"); // Show success animation
-
-                setTimeout(function() {
-                    // Hide success animation and redirect to homePage.html
-                    successAnimation.classList.remove("active");
-                    window.location.href = "homePage.html";
-                }, 2000); // Show animation for 2 seconds before redirecting
-            });
-        });
+        toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
 </body>
 </html>
